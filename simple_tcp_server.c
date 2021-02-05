@@ -37,6 +37,7 @@ int main(void)
     client_fd = accept(fd, (struct sockaddr *)&client_addr, &slen);
     strcpy(client_addr_str, (char *)inet_ntoa((struct in_addr)client_addr.sin_addr));
     printf("Connected with %s.\n", client_addr_str);
+    
     while(1) {
         memset(buffer, 0, BUFFER_SIZE);
         if ((read(client_fd, buffer, sizeof(buffer))) != EOF) {
