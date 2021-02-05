@@ -40,13 +40,12 @@ int main(void)
     
     while(1) {
         memset(buffer, 0, BUFFER_SIZE);
-        if ((read(client_fd, buffer, sizeof(buffer))) != EOF) {
-            printf("%s", buffer);
-        } else {
+        if ((read(client_fd, buffer, sizeof(buffer))) == 0) {
             close(client_fd);
             printf("Disconnected.\n");
             exit(1);
         }
+        printf("%s", buffer);
     }
 
     return 0;
